@@ -1,0 +1,28 @@
+function setup() {
+  createCanvas(1000, 1000, WEBGL);
+}
+
+function draw() {
+  background(0);
+  rotateY(frameCount * 0.005);
+  
+  ambientLight(30);
+  directionalLight(200, 4, 3, 0.25, 0.25, 0);
+ 
+  
+  for (let j = 0; j < 30; j++) {
+    push();
+    for (let i = 0; i < 50; i++) {
+      translate(
+        sin(frameCount * 0.006 + j) * 50,
+        sin(frameCount * 0.004 + j) * 10,
+        i * 0.1
+      );
+      rotateZ(frameCount * 0.002);
+      push();
+      cone(30, 80, 20);
+      pop();
+    }
+    pop();
+  }
+}
