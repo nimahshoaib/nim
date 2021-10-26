@@ -1,0 +1,28 @@
+function setup() {
+  createCanvas(1000, 1000, WEBGL);
+}
+
+function draw() {
+  background(0);
+  rotateX(frameCount * 0.005);
+  
+  ambientLight(100);
+  directionalLight(200, 4, 3, 0.25, 0.25, 0);
+  normalMaterial(99);
+  
+  for (let j = 0; j < 70; j++) {
+    push();
+    for (let i = 0; i < 50; i++) {
+      translate(
+        sin(frameCount * 0.002 + j) * 90,
+        sin(frameCount * 0.008 + j) * 70,
+        i * 0.8
+      );
+      rotateY(frameCount * 0.008);
+      push();
+      torus(80, 20, 20);
+      pop();
+    }
+    pop();
+  }
+}
